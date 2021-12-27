@@ -2,14 +2,18 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using school_management_system_API.Context;
+using school_management_system_API.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace school_management_system_API
@@ -26,11 +30,22 @@ namespace school_management_system_API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<SchoolContext>(options =>
+            {
+                String connectionString = Configuration.GetConnectionString("SchoolDBConnection");
+
+                options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
+            });
+
+            services.AddScoped<SchoolService>();
+
+            services.AddControllers().AddJsonOptions(x =>
+                x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve); //avoid loop
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "school_management_system_API", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "School Management System API", Version = "v1" });
             });
         }
 
@@ -41,7 +56,7 @@ namespace school_management_system_API
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "school_management_system_API v1"));
+                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "School Management System API v1"));
             }
 
             app.UseHttpsRedirection();

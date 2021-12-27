@@ -24,6 +24,8 @@ namespace school_management_system_API.Context
 
             ConfigurationStudent(modelBuilder);
 
+            ConfigurationAddress(modelBuilder);
+
             base.OnModelCreating(modelBuilder);
         }
 
@@ -83,15 +85,15 @@ namespace school_management_system_API.Context
 
             studentConfiguration.Property(x => x.EntityType);
 
-            studentConfiguration.HasDiscriminator(x => x.EntityType).HasValue<StudentAddress>(EntityTypeEnum.Student).HasValue<SchoolAddress>(EntityTypeEnum.Student);
+            studentConfiguration.HasDiscriminator(x => x.EntityType).HasValue<StudentAddress>(EntityTypeEnum.Student).HasValue<SchoolAddress>(EntityTypeEnum.School);
 
-            var studentAddressConfiguration = modelBuilder.Entity<StudentAddress>().HasBaseType<StudentAddress>();
+            var studentAddressConfiguration = modelBuilder.Entity<StudentAddress>().HasBaseType<AddressBase>();
 
-            studentAddressConfiguration.HasOne(x=> x.Student).WithOne().HasForeignKey<Student>(x => x.AddressId);
+            studentAddressConfiguration.HasOne(x=> x.Student).WithMany().HasForeignKey(x => x.Id);
 
-            var schoolAddressConfiguration = modelBuilder.Entity<SchoolAddress>().HasBaseType<SchoolAddress>();
+            var schoolAddressConfiguration = modelBuilder.Entity<SchoolAddress>().HasBaseType<AddressBase>();
 
-            schoolAddressConfiguration.HasOne(x => x.School).WithOne().HasForeignKey<Student>(x => x.AddressId);
+            schoolAddressConfiguration.HasOne(x => x.School).WithMany().HasForeignKey(x => x.Id);
 
         }
     }

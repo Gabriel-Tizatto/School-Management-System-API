@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "hFVJemimeQp0hRrC52Bovpra6pjzGlciYN5LcUE1uDBeFUhgo3zXQhofGbd84JkbNFxyPTCch+ogE5TiHNIPiw==",
+  "dgSpecHash": "eO7TZMySOlKztYgh10Cb17OO/tggbF9HGXHRGmfbyEMO3q/qBg/HynFTK+ORnrKyXQqCIvyDnDlx5dpjssSCEg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\gts_g\\Source\\Repos\\Gabriel-Tizatto\\school_management_system_API\\school_management_system_API\\school_management_system_API.csproj",
+  "projectFilePath": "C:\\Users\\gts_g\\Source\\Repos\\Gabriel-Tizatto\\school_management_system_API\\school_management_system_API\\School Management System_API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\gts_g\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.1\\microsoft.entityframeworkcore.6.0.1.nupkg.sha512",
     "C:\\Users\\gts_g\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\6.0.1\\microsoft.entityframeworkcore.abstractions.6.0.1.nupkg.sha512",

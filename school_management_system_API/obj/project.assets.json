@@ -836,9 +836,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\gts_g\\Source\\Repos\\Gabriel-Tizatto\\school_management_system_API\\school_management_system_API\\school_management_system_API.csproj",
-      "projectName": "school_management_system_API",
-      "projectPath": "C:\\Users\\gts_g\\Source\\Repos\\Gabriel-Tizatto\\school_management_system_API\\school_management_system_API\\school_management_system_API.csproj",
+      "projectUniqueName": "C:\\Users\\gts_g\\Source\\Repos\\Gabriel-Tizatto\\school_management_system_API\\school_management_system_API\\School Management System_API.csproj",
+      "projectName": "School Management System_API",
+      "projectPath": "C:\\Users\\gts_g\\Source\\Repos\\Gabriel-Tizatto\\school_management_system_API\\school_management_system_API\\School Management System_API.csproj",
       "packagesPath": "C:\\Users\\gts_g\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\gts_g\\Source\\Repos\\Gabriel-Tizatto\\school_management_system_API\\school_management_system_API\\obj\\",
       "projectStyle": "PackageReference",

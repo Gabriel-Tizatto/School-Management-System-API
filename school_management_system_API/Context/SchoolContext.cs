@@ -35,13 +35,13 @@ namespace school_management_system_API.Context
 
             schoolConfiguration.HasKey(x => x.Id);
 
-            schoolConfiguration.Property(x => x.Name);
+            schoolConfiguration.Property(x => x.Name).IsRequired().HasMaxLength(250);
 
-            schoolConfiguration.Property(x => x.Type);
+            schoolConfiguration.Property(x => x.Type).IsRequired();
 
-            schoolConfiguration.Property(x => x.Capacity);
+            schoolConfiguration.Property(x => x.Capacity).IsRequired();
 
-            schoolConfiguration.Property(x => x.Unit);
+            schoolConfiguration.Property(x => x.Unit).HasMaxLength(250);
 
             schoolConfiguration.HasOne(x => x.Address).WithMany().HasForeignKey(x => x.AddressId).OnDelete(DeleteBehavior.Cascade);
 
@@ -54,9 +54,9 @@ namespace school_management_system_API.Context
 
             studentConfiguration.HasKey(x => x.Id);
 
-            studentConfiguration.Property(x => x.Name);
+            studentConfiguration.Property(x => x.Name).IsRequired().HasMaxLength(250);
 
-            studentConfiguration.Property(x => x.LastName);
+            studentConfiguration.Property(x => x.LastName).IsRequired().HasMaxLength(250);
 
             studentConfiguration.HasOne(x => x.Address).WithMany().HasForeignKey(x => x.AddressId).OnDelete(DeleteBehavior.Cascade);
 
@@ -71,19 +71,19 @@ namespace school_management_system_API.Context
 
             studentConfiguration.Property(x => x.Street);
 
-            studentConfiguration.Property(x => x.City);
+            studentConfiguration.Property(x => x.City).IsRequired().HasMaxLength(45);
 
-            studentConfiguration.Property(x => x.Country);
+            studentConfiguration.Property(x => x.Country).IsRequired().HasMaxLength(45);
 
             studentConfiguration.Property(x => x.District);
 
             studentConfiguration.Property(x => x.Number);
 
-            studentConfiguration.Property(x => x.CEP);
+            studentConfiguration.Property(x => x.CEP).IsRequired();
 
             studentConfiguration.Property(x => x.Observation);
 
-            studentConfiguration.Property(x => x.EntityType);
+            studentConfiguration.Property(x => x.EntityType).IsRequired();
 
             studentConfiguration.HasDiscriminator(x => x.EntityType).HasValue<StudentAddress>(EntityTypeEnum.Student).HasValue<SchoolAddress>(EntityTypeEnum.School);
 

@@ -1,35 +1,33 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using school_management_system_API.Models;
 using school_management_system_API.Services;
 using System;
-using System.Linq;
 
 namespace school_management_system_API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class SchoolController : ControllerBase
+    public class StudentController : ControllerBase
     {
 
-        private readonly SchoolService _schoolService;
+        private readonly StudentService _studentService;
 
-        public SchoolController(SchoolService schoolService)
+        public StudentController(StudentService studentService)
         {
-            this._schoolService = schoolService;
+            this._studentService = studentService;
         }
 
         [HttpGet]
         public ActionResult Get()
         {
-            return Ok(_schoolService.GetAll());
+            return Ok(_studentService.GetAll());
         }
 
         [HttpGet]
         [Route("[controller]/{id}")]
         public ActionResult GetById(int id)
         {
-            var result = _schoolService.GetById(id);
+            var result = _studentService.GetById(id);
 
             if (result.Failure) return BadRequest(result.Error);
 
@@ -37,11 +35,11 @@ namespace school_management_system_API.Controllers
         }
 
         [HttpPost]
-        public ActionResult Post([FromBody]School school)
+        public ActionResult Post([FromBody]Student student)
         {
             if(!ModelState.IsValid) return BadRequest();
 
-            var result = _schoolService.Create(school);
+            var result = _studentService.Create(student);
 
             if (result.Failure) return BadRequest(result.Error);
 
@@ -50,13 +48,13 @@ namespace school_management_system_API.Controllers
         }
 
         [HttpPut]
-        public ActionResult Put([FromBody] School school, int id)
+        public ActionResult Put([FromBody] Student  student, int id)
         {
             if (!ModelState.IsValid) return BadRequest();
 
-            school.Id = id;
+            student.Id = id;
 
-            var result = _schoolService.Update(school);
+            var result = _studentService.Update(student);
 
             if (result.Failure) return BadRequest(result.Error);
 
@@ -70,7 +68,7 @@ namespace school_management_system_API.Controllers
         {
             if (!ModelState.IsValid) return BadRequest();
 
-            var result = _schoolService.RemoveById(id);
+            var result = _studentService.RemoveById(id);
 
             if (result.Failure) return BadRequest(result.Error);
 

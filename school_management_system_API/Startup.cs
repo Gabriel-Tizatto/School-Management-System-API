@@ -1,20 +1,14 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using school_management_system_API.Context;
 using school_management_system_API.Services;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
 namespace school_management_system_API
 {
@@ -37,7 +31,8 @@ namespace school_management_system_API
                 options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString));
             });
 
-            services.AddScoped<SchoolService>();
+            services.AddScoped<SchoolService>()
+                .AddScoped<StudentService>();
 
             services.AddControllers().AddJsonOptions(x =>
                 x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve); //avoid loop

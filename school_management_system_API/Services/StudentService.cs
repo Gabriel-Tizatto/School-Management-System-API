@@ -6,47 +6,47 @@ using System.Linq;
 
 namespace school_management_system_API.Services
 {
-    public class SchoolService
+    public class StudentService
     {
         private readonly SchoolContext _context;
-        public SchoolService(SchoolContext context)
+        public StudentService(SchoolContext context)
         {
             _context = context;
         }
 
-        public IQueryable<School> GetAll() => _context.Schools;
+        public IQueryable<Student> GetAll() => _context.Students;
 
-        public Result<School> GetById(int id)
+        public Result<Student> GetById(int id)
         {
-            var school = _context.Schools.FirstOrDefault(x => x.Id == id);
+            var school = _context.Students.FirstOrDefault(x => x.Id == id);
 
-            if (school == null) Result.Fail("Escola não encontrada");
+            if (school == null) Result.Fail("Estudante não encontrado");
 
             return Result.Ok(school);
         }
 
-        public Result<School> Create(School school)
+        public Result<Student> Create(Student student)
         {
             try
             {
-                school = _context.Schools.Add(school).Entity;
+                student = _context.Students.Add(student).Entity;
 
                 _context.SaveChanges();
             }
             catch (Exception ex)
             {
-                return Result.Fail<School>(ex.Message);
+                return Result.Fail<Student>(ex.Message);
             }
 
-            return Result.Ok(school);
+            return Result.Ok(student);
 
         }
 
-        public Result Update(School school)
+        public Result Update(Student student)
         {
             try
             {
-                _context.Schools.Update(school);
+                _context.Students.Update(student);
 
                 _context.SaveChanges();
             }
@@ -55,24 +55,24 @@ namespace school_management_system_API.Services
                 return Result.Fail(ex.Message);
             }
 
-            return Result.Ok(school);
+            return Result.Ok(student);
 
         }
 
         public Result RemoveById(int id)
         {
-            var school =  _context.Schools.FirstOrDefault(x => x.Id == id);
+            var student =  _context.Students.FirstOrDefault(x => x.Id == id);
 
-            if (school == null) return Result.Fail("Escola não encontrada");
+            if (student == null) return Result.Fail("Estudante não encontrada");
 
-            return Remove(school);
+            return Remove(student);
         }
 
-        public Result Remove(School school)
+        public Result Remove(Student student)
         {
             try
             {
-                _context.Schools.Remove(school);
+                _context.Students.Remove(student);
 
                 _context.SaveChanges();
             }

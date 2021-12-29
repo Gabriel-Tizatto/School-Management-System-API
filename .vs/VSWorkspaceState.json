@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\school_management_system_API",
+    "\\school_management_system_API\\Services"
   ],
-  "SelectedNode": "\\school_management_system_API.sln",
+  "SelectedNode": "\\school_management_system_API\\Services\\SchoolService.cs",
   "PreviewInSolutionExplorer": false
 }

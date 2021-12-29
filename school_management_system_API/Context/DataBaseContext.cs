@@ -4,9 +4,9 @@ using school_management_system_API.Models;
 
 namespace school_management_system_API.Context
 {
-    public class SchoolContext : DbContext
+    public class DataBaseContext : DbContext
     {
-        public SchoolContext(DbContextOptions options) : base(options)
+        public DataBaseContext(DbContextOptions options) : base(options)
         {
         }
 

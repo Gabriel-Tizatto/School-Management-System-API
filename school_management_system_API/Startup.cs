@@ -24,7 +24,7 @@ namespace school_management_system_API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<SchoolContext>(options =>
+            services.AddDbContext<DataBaseContext>(options =>
             {
                 String connectionString = Configuration.GetConnectionString("SchoolDBConnection");
 
@@ -32,7 +32,8 @@ namespace school_management_system_API
             });
 
             services.AddScoped<SchoolService>()
-                .AddScoped<StudentService>();
+                .AddScoped<StudentService>()
+                .AddScoped<AddressService>();
 
             services.AddControllers().AddJsonOptions(x =>
                 x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve); //avoid loop

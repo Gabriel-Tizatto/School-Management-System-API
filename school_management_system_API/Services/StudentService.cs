@@ -8,8 +8,8 @@ namespace school_management_system_API.Services
 {
     public class StudentService
     {
-        private readonly SchoolContext _context;
-        public StudentService(SchoolContext context)
+        private readonly Context.DataBaseContext _context;
+        public StudentService(Context.DataBaseContext context)
         {
             _context = context;
         }

@@ -1,13 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OData.Routing.Controllers;
 using school_management_system_API.Models;
 using school_management_system_API.Services;
 using System;
 
 namespace school_management_system_API.Controllers
 {
-    [ApiController]
-    [Route("[controller]")]
-    public class StudentController : ControllerBase
+    public class StudentController : ODataController
     {
 
         private readonly StudentService _studentService;
@@ -24,10 +23,11 @@ namespace school_management_system_API.Controllers
         }
 
         [HttpGet]
-        [Route("[controller]/{id}")]
-        public ActionResult GetById(int id)
+        [Route("[controller]/{key}")]
+        [Route("[controller]({key})")]
+        public ActionResult GetById(int key)
         {
-            var result = _studentService.GetById(id);
+            var result = _studentService.GetById(key);
 
             if (result.Failure) return BadRequest(result.Error);
 
@@ -48,11 +48,11 @@ namespace school_management_system_API.Controllers
         }
 
         [HttpPut]
-        public ActionResult Put([FromBody] Student  student, int id)
+        public ActionResult Put([FromBody] Student  student, int key)
         {
             if (!ModelState.IsValid) return BadRequest();
 
-            student.Id = id;
+            student.Id = key;
 
             var result = _studentService.Update(student);
 
@@ -64,11 +64,11 @@ namespace school_management_system_API.Controllers
         }
 
         [HttpDelete]
-        public ActionResult Delete( int id)
+        public ActionResult Delete( int key)
         {
             if (!ModelState.IsValid) return BadRequest();
 
-            var result = _studentService.RemoveById(id);
+            var result = _studentService.RemoveById(key);
 
             if (result.Failure) return BadRequest(result.Error);
 

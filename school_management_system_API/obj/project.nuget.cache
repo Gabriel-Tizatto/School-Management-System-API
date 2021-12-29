@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "tAI2oO+FFMhQpjuv9TH5UckUa7NjaamXOaNvvbzgF5HmA8aNAsUj7ADPb5HKVKfhOTZvXrosvD3iwjcF5RAiYg==",
+  "dgSpecHash": "zsU5Fx/0lk3JI71JTZnCm/wxlHzpYLc4dkHHwRossD/0/W2G+VjoyxrbJVjrEKHmrGdSvdmjl8YHxub4Zfp1NQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\gts_g\\Source\\Repos\\Gabriel-Tizatto\\school_management_system_API\\school_management_system_API\\School Management System API.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\gts_g\\.nuget\\packages\\microsoft.aspnetcore.odata\\8.0.4\\microsoft.aspnetcore.odata.8.0.4.nupkg.sha512",
+    "C:\\Users\\gts_g\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\5.0.0\\microsoft.bcl.asyncinterfaces.5.0.0.nupkg.sha512",
     "C:\\Users\\gts_g\\.nuget\\packages\\microsoft.entityframeworkcore\\6.0.1\\microsoft.entityframeworkcore.6.0.1.nupkg.sha512",
     "C:\\Users\\gts_g\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\6.0.1\\microsoft.entityframeworkcore.abstractions.6.0.1.nupkg.sha512",
     "C:\\Users\\gts_g\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\6.0.1\\microsoft.entityframeworkcore.analyzers.6.0.1.nupkg.sha512",
@@ -18,7 +20,11 @@
     "C:\\Users\\gts_g\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\6.0.0\\microsoft.extensions.logging.abstractions.6.0.0.nupkg.sha512",
     "C:\\Users\\gts_g\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
     "C:\\Users\\gts_g\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
+    "C:\\Users\\gts_g\\.nuget\\packages\\microsoft.odata.core\\7.9.4\\microsoft.odata.core.7.9.4.nupkg.sha512",
+    "C:\\Users\\gts_g\\.nuget\\packages\\microsoft.odata.edm\\7.9.4\\microsoft.odata.edm.7.9.4.nupkg.sha512",
+    "C:\\Users\\gts_g\\.nuget\\packages\\microsoft.odata.modelbuilder\\1.0.7\\microsoft.odata.modelbuilder.1.0.7.nupkg.sha512",
     "C:\\Users\\gts_g\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\gts_g\\.nuget\\packages\\microsoft.spatial\\7.9.4\\microsoft.spatial.7.9.4.nupkg.sha512",
     "C:\\Users\\gts_g\\.nuget\\packages\\mysqlconnector\\2.0.0\\mysqlconnector.2.0.0.nupkg.sha512",
     "C:\\Users\\gts_g\\.nuget\\packages\\pomelo.entityframeworkcore.mysql\\6.0.0\\pomelo.entityframeworkcore.mysql.6.0.0.nupkg.sha512",
     "C:\\Users\\gts_g\\.nuget\\packages\\swashbuckle.aspnetcore\\5.6.3\\swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
@@ -26,8 +32,11 @@
     "C:\\Users\\gts_g\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\5.6.3\\swashbuckle.aspnetcore.swaggergen.5.6.3.nupkg.sha512",
     "C:\\Users\\gts_g\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\5.6.3\\swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512",
     "C:\\Users\\gts_g\\.nuget\\packages\\system.collections.immutable\\6.0.0\\system.collections.immutable.6.0.0.nupkg.sha512",
+    "C:\\Users\\gts_g\\.nuget\\packages\\system.componentmodel.annotations\\4.6.0\\system.componentmodel.annotations.4.6.0.nupkg.sha512",
     "C:\\Users\\gts_g\\.nuget\\packages\\system.diagnostics.diagnosticsource\\6.0.0\\system.diagnostics.diagnosticsource.6.0.0.nupkg.sha512",
-    "C:\\Users\\gts_g\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+    "C:\\Users\\gts_g\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\gts_g\\.nuget\\packages\\system.text.encodings.web\\4.7.2\\system.text.encodings.web.4.7.2.nupkg.sha512",
+    "C:\\Users\\gts_g\\.nuget\\packages\\system.text.json\\4.6.0\\system.text.json.4.6.0.nupkg.sha512"
   ],
   "logs": []
 }

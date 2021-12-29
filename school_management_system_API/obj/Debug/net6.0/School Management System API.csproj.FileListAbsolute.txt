@@ -41,3 +41,9 @@ C:\Users\gts_g\Source\Repos\Gabriel-Tizatto\school_management_system_API\school_
 C:\Users\gts_g\Source\Repos\Gabriel-Tizatto\school_management_system_API\school_management_system_API\obj\Debug\net6.0\ref\School Management System API.dll
 C:\Users\gts_g\Source\Repos\Gabriel-Tizatto\school_management_system_API\school_management_system_API\obj\Debug\net6.0\School Management System API.pdb
 C:\Users\gts_g\Source\Repos\Gabriel-Tizatto\school_management_system_API\school_management_system_API\obj\Debug\net6.0\School Management System API.genruntimeconfig.cache
+C:\Users\gts_g\Source\Repos\Gabriel-Tizatto\school_management_system_API\school_management_system_API\bin\Debug\net6.0\Microsoft.AspNetCore.OData.dll
+C:\Users\gts_g\Source\Repos\Gabriel-Tizatto\school_management_system_API\school_management_system_API\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\gts_g\Source\Repos\Gabriel-Tizatto\school_management_system_API\school_management_system_API\bin\Debug\net6.0\Microsoft.OData.Core.dll
+C:\Users\gts_g\Source\Repos\Gabriel-Tizatto\school_management_system_API\school_management_system_API\bin\Debug\net6.0\Microsoft.OData.Edm.dll
+C:\Users\gts_g\Source\Repos\Gabriel-Tizatto\school_management_system_API\school_management_system_API\bin\Debug\net6.0\Microsoft.OData.ModelBuilder.dll
+C:\Users\gts_g\Source\Repos\Gabriel-Tizatto\school_management_system_API\school_management_system_API\bin\Debug\net6.0\Microsoft.Spatial.dll

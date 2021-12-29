@@ -1,13 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OData.Routing.Controllers;
 using school_management_system_API.Models;
 using school_management_system_API.Services;
 using System;
 
 namespace school_management_system_API.Controllers
 {
-    [ApiController]
-    [Route("[controller]")]
-    public class AddressController : ControllerBase
+    
+    public class AddressController : ODataController
     {
 
         private readonly AddressService _addressService;
@@ -24,10 +24,11 @@ namespace school_management_system_API.Controllers
         }
 
         [HttpGet]
-        [Route("[controller]/{id}")]
-        public ActionResult GetById(int id)
+        [Route("[controller]/{key}")]
+        [Route("[controller]({key})")]
+        public ActionResult GetById(int key)
         {
-            var result = _addressService.GetById(id);
+            var result = _addressService.GetById(key);
 
             if (result.Failure) return BadRequest(result.Error);
 
@@ -48,11 +49,11 @@ namespace school_management_system_API.Controllers
         }
 
         [HttpPut]
-        public ActionResult Put([FromBody] AddressBase  address, int id)
+        public ActionResult Put([FromBody] AddressBase  address, int key)
         {
             if (!ModelState.IsValid) return BadRequest();
 
-            address.Id = id;
+            address.Id = key;
 
             var result = _addressService.Update(address);
 
@@ -64,11 +65,11 @@ namespace school_management_system_API.Controllers
         }
 
         [HttpDelete]
-        public ActionResult Delete( int id)
+        public ActionResult Delete( int key)
         {
             if (!ModelState.IsValid) return BadRequest();
 
-            var result = _addressService.RemoveById(id);
+            var result = _addressService.RemoveById(key);
 
             if (result.Failure) return BadRequest(result.Error);
 

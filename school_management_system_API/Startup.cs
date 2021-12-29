@@ -1,11 +1,15 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.OData;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.OData.Edm;
+using Microsoft.OData.ModelBuilder;
 using Microsoft.OpenApi.Models;
 using school_management_system_API.Context;
+using school_management_system_API.Models;
 using school_management_system_API.Services;
 using System;
 using System.Text.Json.Serialization;
@@ -38,7 +42,9 @@ namespace school_management_system_API
             services.AddControllers().AddJsonOptions(x =>
                 x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve); //avoid loop
 
-            services.AddControllers();
+            services.AddControllers()
+                .AddOData(options => options.AddRouteComponents(GetEdmModel()).Expand().EnableQueryFeatures(50).SkipToken().SetMaxTop(50).Select().Filter().OrderBy().Count());
+            
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "School Management System API", Version = "v1" });
@@ -65,6 +71,20 @@ namespace school_management_system_API
             {
                 endpoints.MapControllers();
             });
+        }
+        static IEdmModel GetEdmModel()
+        {
+            ODataConventionModelBuilder odataBuilder = new();
+
+            //odataBuilder.EnableLowerCamelCase(NameResolverOptions.ProcessDataMemberAttributePropertyNames);
+
+            odataBuilder.EntitySet<School>("School").EntityType.Abstract().HasKey(x => x.Id);
+
+            odataBuilder.EntitySet<Student>("Student").EntityType.HasKey(x => x.Id);
+
+            odataBuilder.EntitySet<AddressBase>("Address").EntityType.HasKey(x => x.Id);
+
+            return odataBuilder.GetEdmModel();
         }
     }
 }

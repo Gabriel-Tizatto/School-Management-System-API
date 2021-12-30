@@ -47,3 +47,10 @@ C:\Users\gts_g\Source\Repos\Gabriel-Tizatto\school_management_system_API\school_
 C:\Users\gts_g\Source\Repos\Gabriel-Tizatto\school_management_system_API\school_management_system_API\bin\Debug\net6.0\Microsoft.OData.Edm.dll
 C:\Users\gts_g\Source\Repos\Gabriel-Tizatto\school_management_system_API\school_management_system_API\bin\Debug\net6.0\Microsoft.OData.ModelBuilder.dll
 C:\Users\gts_g\Source\Repos\Gabriel-Tizatto\school_management_system_API\school_management_system_API\bin\Debug\net6.0\Microsoft.Spatial.dll
+C:\Users\gts_g\Source\Repos\Gabriel-Tizatto\school_management_system_API\school_management_system_API\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\gts_g\Source\Repos\Gabriel-Tizatto\school_management_system_API\school_management_system_API\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\gts_g\Source\Repos\Gabriel-Tizatto\school_management_system_API\school_management_system_API\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\gts_g\Source\Repos\Gabriel-Tizatto\school_management_system_API\school_management_system_API\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\gts_g\Source\Repos\Gabriel-Tizatto\school_management_system_API\school_management_system_API\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\gts_g\Source\Repos\Gabriel-Tizatto\school_management_system_API\school_management_system_API\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\gts_g\Source\Repos\Gabriel-Tizatto\school_management_system_API\school_management_system_API\bin\Debug\net6.0\System.IdentityModel.Tokens.Jwt.dll

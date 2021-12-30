@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\school_management_system_API",
+    "\\school_management_system_API\\Context",
     "\\school_management_system_API\\Services"
   ],
-  "SelectedNode": "\\school_management_system_API\\Services\\SchoolService.cs",
+  "SelectedNode": "\\school_management_system_API\\Context\\DataBaseContext.cs",
   "PreviewInSolutionExplorer": false
 }

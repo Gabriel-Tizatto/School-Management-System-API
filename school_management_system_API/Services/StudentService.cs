@@ -8,17 +8,17 @@ namespace school_management_system_API.Services
 {
     public class StudentService
     {
-        private readonly Context.DataBaseContext _context;
+        private readonly DataBaseContext _context;
         public StudentService(Context.DataBaseContext context)
         {
             _context = context;
         }
 
-        public IQueryable<Student> GetAll() => _context.Students;
+        public IQueryable<Student> GetAll(int schoolId) => _context.Students.Where(x=> x.SchoolId == schoolId);
 
-        public Result<Student> GetById(int id)
+        public Result<Student> GetById(int id, int schoolId)
         {
-            var school = _context.Students.FirstOrDefault(x => x.Id == id);
+            var school = _context.Students.FirstOrDefault(x => x.Id == id && schoolId == x.SchoolId);
 
             if (school == null) Result.Fail("Estudante não encontrado");
 
@@ -59,11 +59,11 @@ namespace school_management_system_API.Services
 
         }
 
-        public Result RemoveById(int id)
+        public Result RemoveById(int id, int schoolId)
         {
-            var student =  _context.Students.FirstOrDefault(x => x.Id == id);
+            var student =  _context.Students.FirstOrDefault(x => x.Id == id && schoolId == x.SchoolId);
 
-            if (student == null) return Result.Fail("Estudante não encontrada");
+            if (student == null) return Result.Fail("Estudante não encontrado");
 
             return Remove(student);
         }

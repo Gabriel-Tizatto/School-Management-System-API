@@ -1,12 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.OData.Routing.Controllers;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OData.Query;
 using school_management_system_API.Models;
 using school_management_system_API.Services;
 using System;
 
 namespace school_management_system_API.Controllers
 {
-    public class StudentController : ODataController
+    [Authorize, EnableCors("AllowAll")]
+    public class StudentController : BaseController
     {
 
         private readonly StudentService _studentService;
@@ -17,9 +20,10 @@ namespace school_management_system_API.Controllers
         }
 
         [HttpGet]
+        [EnableQuery]
         public ActionResult Get()
         {
-            return Ok(_studentService.GetAll());
+            return Ok(_studentService.GetAll(SchoolId));
         }
 
         [HttpGet]
@@ -27,7 +31,7 @@ namespace school_management_system_API.Controllers
         [Route("[controller]({key})")]
         public ActionResult GetById(int key)
         {
-            var result = _studentService.GetById(key);
+            var result = _studentService.GetById(key, SchoolId);
 
             if (result.Failure) return BadRequest(result.Error);
 
@@ -38,6 +42,8 @@ namespace school_management_system_API.Controllers
         public ActionResult Post([FromBody]Student student)
         {
             if(!ModelState.IsValid) return BadRequest();
+
+            if (student.SchoolId != SchoolId) return BadRequest();
 
             var result = _studentService.Create(student);
 
@@ -51,6 +57,8 @@ namespace school_management_system_API.Controllers
         public ActionResult Put([FromBody] Student  student, int key)
         {
             if (!ModelState.IsValid) return BadRequest();
+
+            if (student.SchoolId != SchoolId) return BadRequest();
 
             student.Id = key;
 
@@ -68,7 +76,7 @@ namespace school_management_system_API.Controllers
         {
             if (!ModelState.IsValid) return BadRequest();
 
-            var result = _studentService.RemoveById(key);
+            var result = _studentService.RemoveById(key, SchoolId);
 
             if (result.Failure) return BadRequest(result.Error);
 

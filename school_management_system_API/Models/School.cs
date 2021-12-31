@@ -1,12 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace school_management_system_API.Models
 {
     public class School : Base
     {
 
+        public School()
+        {
+            Identifier = Guid.NewGuid();
+        }
         public string Name { get; set; }
-                
+
+        public Guid Identifier { get; set; }
+
         public SchoolTypeEnum Type { get; set; }
 
         public int Capacity { get; set; }

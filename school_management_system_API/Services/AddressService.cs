@@ -17,15 +17,16 @@ namespace school_management_system_API.Services
 
         public Result<AddressBase> GetById(int id)
         {
-            var school = _context.Addresses.FirstOrDefault(x => x.Id == id);
+            var address = _context.Addresses.FirstOrDefault(x => x.Id == id);
+            
+            if (address == null) Result.Fail("Endereço não encontrado");
 
-            if (school == null) Result.Fail("Endereço não encontrado");
-
-            return Result.Ok(school);
+            return Result.Ok(address);
         }
 
         public Result<AddressBase> Create(AddressBase address)
         {
+
             try
             {
                 address = _context.Addresses.Add(address).Entity;
@@ -41,8 +42,12 @@ namespace school_management_system_API.Services
 
         }
 
-        public Result Update(AddressBase address)
+        public Result Update(AddressBase address, int schoolId)
         {
+            var result = AddressIsValid(address, schoolId);
+
+            if(result.Failure) return result;
+
             try
             {
                 _context.Addresses.Update(address);
@@ -58,16 +63,46 @@ namespace school_management_system_API.Services
 
         }
 
-        public Result RemoveById(int id)
+        private Result AddressIsValid(AddressBase address, int schoolId)
+        {
+            if (address is SchoolAddress schoolAddress)
+                return AddressIsValid(schoolAddress, schoolId);
+
+            return AddressIsValid(address as StudentAddress, schoolId);
+        }
+
+        private Result AddressIsValid(SchoolAddress address, int schoolId)
+        {
+            if (!_context.SchoolAddresses.Any(x => x.Id == address.Id && x.School.Id == schoolId))
+                Result.Fail("Endereço inválido");
+
+            return Result.Ok();
+
+        }
+
+        private Result AddressIsValid(StudentAddress address, int schoolId)
+        {
+            if (!_context.StudentAddresses.Any(x => x.Id == address.Id && x.Student.SchoolId == schoolId))
+                Result.Fail("Endereço inválido");
+
+            return Result.Ok();
+
+        }
+
+        public Result RemoveById(int id, int schoolId)
         {
             var address =  _context.Addresses.FirstOrDefault(x => x.Id == id);
+
+            var result = AddressIsValid(address, schoolId);
+
+            if (result.Failure) return result;
 
             if (address == null) return Result.Fail("Endereço não encontrada");
 
             return Remove(address);
         }
 
-        public Result Remove(AddressBase address)
+        private Result Remove(AddressBase address)
         {
             try
             {

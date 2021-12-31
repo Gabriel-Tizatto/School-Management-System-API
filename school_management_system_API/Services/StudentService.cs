@@ -18,15 +18,18 @@ namespace school_management_system_API.Services
 
         public Result<Student> GetById(int id, int schoolId)
         {
-            var school = _context.Students.FirstOrDefault(x => x.Id == id && schoolId == x.SchoolId);
+            var student = _context.Students.FirstOrDefault(x => x.Id == id && schoolId == x.SchoolId);
 
-            if (school == null) Result.Fail("Estudante não encontrado");
+            if (student == null) Result.Fail("Estudante não encontrado");
 
-            return Result.Ok(school);
+            return Result.Ok(student);
         }
 
-        public Result<Student> Create(Student student)
+        public Result<Student> Create(Student student, int schoolId)
         {
+            if (student.SchoolId != schoolId)
+                return Result.Fail<Student>("Estudante inválido");
+
             try
             {
                 student = _context.Students.Add(student).Entity;
@@ -42,8 +45,11 @@ namespace school_management_system_API.Services
 
         }
 
-        public Result Update(Student student)
+        public Result Update(Student student, int schoolId)
         {
+            if (!_context.Students.Any(x => x.Id == student.Id && schoolId == x.SchoolId)) Result.Fail("Estudante não encontrado");
+
+
             try
             {
                 _context.Students.Update(student);

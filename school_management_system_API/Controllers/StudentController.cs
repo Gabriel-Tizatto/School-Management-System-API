@@ -43,9 +43,7 @@ namespace school_management_system_API.Controllers
         {
             if(!ModelState.IsValid) return BadRequest();
 
-            if (student.SchoolId != SchoolId) return BadRequest();
-
-            var result = _studentService.Create(student);
+            var result = _studentService.Create(student, SchoolId);
 
             if (result.Failure) return BadRequest(result.Error);
 
@@ -58,14 +56,11 @@ namespace school_management_system_API.Controllers
         {
             if (!ModelState.IsValid) return BadRequest();
 
-            if (student.SchoolId != SchoolId) return BadRequest();
-
             student.Id = key;
 
-            var result = _studentService.Update(student);
+            var result = _studentService.Update(student, SchoolId);
 
             if (result.Failure) return BadRequest(result.Error);
-
 
             return Ok();
 

@@ -16,7 +16,10 @@ namespace school_management_system_API.Context
 
         public DbSet<AddressBase> Addresses { get; set; }
 
-        
+        public DbSet<SchoolAddress> SchoolAddresses { get; set; }
+
+        public DbSet<StudentAddress> StudentAddresses { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -36,6 +39,8 @@ namespace school_management_system_API.Context
             schoolConfiguration.HasKey(x => x.Id);
 
             schoolConfiguration.Property(x => x.Name).IsRequired().HasMaxLength(250);
+
+            schoolConfiguration.Property(x => x.Identifier).IsRequired().HasMaxLength(40);
 
             schoolConfiguration.Property(x => x.Type).IsRequired();
 

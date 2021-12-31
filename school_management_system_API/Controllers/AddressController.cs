@@ -1,13 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.OData.Routing.Controllers;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OData.Query;
 using school_management_system_API.Models;
 using school_management_system_API.Services;
 using System;
 
 namespace school_management_system_API.Controllers
 {
-    
-    public class AddressController : ODataController
+    [EnableCors("AllowAll")]
+    public class AddressController : BaseController
     {
 
         private readonly AddressService _addressService;
@@ -18,6 +20,7 @@ namespace school_management_system_API.Controllers
         }
 
         [HttpGet]
+        [EnableQuery]
         public ActionResult Get()
         {
             return Ok(_addressService.GetAll());
@@ -49,13 +52,14 @@ namespace school_management_system_API.Controllers
         }
 
         [HttpPut]
+        [Authorize]
         public ActionResult Put([FromBody] AddressBase  address, int key)
         {
             if (!ModelState.IsValid) return BadRequest();
 
             address.Id = key;
 
-            var result = _addressService.Update(address);
+            var result = _addressService.Update(address, SchoolId);
 
             if (result.Failure) return BadRequest(result.Error);
 
@@ -65,11 +69,12 @@ namespace school_management_system_API.Controllers
         }
 
         [HttpDelete]
+        [Authorize]
         public ActionResult Delete( int key)
         {
             if (!ModelState.IsValid) return BadRequest();
 
-            var result = _addressService.RemoveById(key);
+            var result = _addressService.RemoveById(key, SchoolId);
 
             if (result.Failure) return BadRequest(result.Error);
 

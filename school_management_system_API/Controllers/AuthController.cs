@@ -27,8 +27,10 @@ public class AuthController : ODataController
         if (String.IsNullOrWhiteSpace(credenciais?.ClientId) || String.IsNullOrWhiteSpace(credenciais.ClientSecret))
             return BadRequest("ClientId e ClientSecret são obrigatórios");
 
+        if(!Guid.TryParse(credenciais.ClientSecret,out Guid clientSecretGuid))
+            return BadRequest("ClientSecret inválido");
 
-        var school = dbContext.Schools.FirstOrDefault(x => x.Id == Int32.Parse(credenciais.ClientId) && x.Name == credenciais.ClientSecret);
+        var school = dbContext.Schools.FirstOrDefault(x => x.Id == Int32.Parse(credenciais.ClientId) && x.Identifier == clientSecretGuid);
 
         if (school == null)
             return Unauthorized("ClientId incorreto");
@@ -45,7 +47,7 @@ public class AuthController : ODataController
         ClaimsIdentity identity = new(
             new GenericIdentity(school.Id.ToString(), ClaimTypes.Sid),
             new[] {
-                new Claim(ClaimTypes.Actor, school.Name.ToString()),
+                new Claim(ClaimTypes.Actor, school.Identifier.ToString()),
                 new Claim(ClaimTypes.PrimarySid, Request.HttpContext.Connection.RemoteIpAddress?.ToString() ?? String.Empty),
                 new Claim(ClaimTypes.System, Request.Headers.UserAgent),
             }

@@ -1,4 +1,5 @@
-﻿using school_management_system_API.Context;
+﻿using Microsoft.EntityFrameworkCore;
+using school_management_system_API.Context;
 using school_management_system_API.Models;
 using school_management_system_API.Utils;
 using System;
@@ -8,8 +9,8 @@ namespace school_management_system_API.Services
 {
     public class SchoolService
     {
-        private readonly Context.DataBaseContext _context;
-        public SchoolService(Context.DataBaseContext context)
+        private readonly DataBaseContext _context;
+        public SchoolService(DataBaseContext context)
         {
             _context = context;
         }
@@ -61,7 +62,7 @@ namespace school_management_system_API.Services
 
         public Result RemoveById(int id)
         {
-            var school =  _context.Schools.FirstOrDefault(x => x.Id == id);
+            var school =  _context.Schools.Include(x=> x.Students).FirstOrDefault(x => x.Id == id);
 
             if (school == null) return Result.Fail("Escola não encontrada");
 
